@@ -52,3 +52,34 @@
 - `git clone`
   - 모든 내용(파일 등)을 전부 가져옴, 다운로드와 비슷함
   - `git clone remote_repo_url`원격 저장소를 전부 복제해 오는것으로 해당 명령어 사용 시 `git init`명령을 통해 git 저장소 지정해줄 필요없음
+---
+---
+- `git revert`
+  - 특정 commit을 없던 일로 만드는 작업
+  - 프로젝트 기록에서 commit을 없었던 일로 처리 후 그 결과를 새로운 commit으로 추가
+  - 기록을 남겨 저장을 하고 다른 개발자들과 진행사항을 맞추기 위해서
+  - 삭제된 commit은 없어지는것이 아니라 반영이 안될뿐
+  - `git revert aaaa bbbb` : 여러 commit을 한번에 취소
+  - `git revert aaaa .. dddd` : 범위 내 commit을 한번에 취소
+  - `git revert --no-edit` : vim 실행하지 않고 취소
+  - `git revert --no-commit` : 자동으로 commit하지 않고 변경 사항을 staging area에 올림
+- `git reset`
+  - 특정 commit으로 되돌아가는 작업
+  - `git reset [옵션] <commit id>`
+  - 특정 commit으로 되돌아가는데 덮어쓰는 방식으로 돌아가기 때문에 특정 시점 이후의 commit을 전부 삭제 **위험함**
+  - `--soft` = 삭제한 내용을 staging area에
+  - `--mixed` = 삭제된 내용을 working directory(기본값)
+  - `--hard` = 기록 안남기고 아예 삭제
+
+### *부록*
+- `git undoing`
+  - 파일 내용을 수정 전으로 돌리는 행위
+  - staging area에 올라간 파일을 unstage함
+- `git restore`
+  - modified 상태의 파일 되돌리기
+  - working directory에서 파일을 수정한 뒤, 수정 내용을 전부 초기화 하는 작업
+  - 원래 파일로 덮어쓰는 방식이라 수정 내용 전부 삭제
+  - 해당 명령어 사용 시 이후 수정 취소 후 내용 복원 X
+- `git unstage`
+  - `git rm --cached` staging area에서 working directory로 되돌리기 // git 저장소에 commit이 없을 때 사용
+  - `git restore --staged` staging area에서 working directory로 되돌리기 // git 저장소에 commit이 존재할때 사용
