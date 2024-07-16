@@ -236,3 +236,258 @@ my_str[::-1]
 |-------------:	|:---------:	|:---------:	|:---------:	|:---------:	|:---------:	|----------	|
 |     index    	|      0    	|      1    	|      2    	|      3    	|      4    	|          	|
 |     index    	|     <span style='color:yellow;'>-5</span>    	|     <span style='color:yellow;'>-4</span>    	|     <span style='color:yellow;'>-3</span>    	|     <span style='color:yellow;'>-2</span>    	|     <span style='color:yellow;'>-1</span>    	|          	|
+
+### tuple `튜플`
+- 여러 개의 값을 순서대로 지정하는 `변경 불가능한` 시퀀스 자료형
+
+#### 튜플 표현
+- 0개 이상의 객체를 포함하며 데이터 목록을 저장
+- 소괄호(`()`)로 표기
+- 데이터는 어떤 자료형도 저장할 수 있음
+
+    ```python
+    my_tuple_1 = ()
+
+    my_tuple_2 = (1,)
+    # tuple = (1) 이렇게 넣으면 tuple이 아니라 int로 적용되버림
+
+    my_tuple_3 = (1, 'a', 3, 'b', 5)
+    ```
+
+#### 튜플의 시퀀스 특징
+```python
+my_tuple = (1, 'a', 3, 'b', 5)
+
+# 인덱싱
+print(my_tuple[1])  # a
+
+# 슬라이싱
+print(my_tuple[2:4])  # (3, 'b')
+print(my_tuple[:3])  # (1, 'a', 3)
+print(my_tuple[3:])  # ('b', 5)
+print(my_tuple[0:5:2])  # (1, 3, 5)
+print(my_tuple[::-1])  # (5, 'b', 3, 'a', 1)
+
+# 길이
+print(len(my_tuple))  # 5
+```
+
+#### 튜플은 불변(변경 불가)
+```python
+my_tuple = (1, 'a', 3, 'b', 5)
+
+# TypeError: 'tuple' object does not support item assignment
+my_tuple[1] = 'z'
+```
+
+#### 튜플은 어디에 쓰일까?
+- 튜플의 불변 특성을 사용한 안전하게 여러 개의 값을 전달, 그룹화, `다중 할당` 등
+- 개발자가 직접 사용하기 보다 `‘파이썬 내부 동작’`에서 주로 사용됨
+
+    ```python
+    x, y = (10, 20)
+
+    print(x)  # 10
+    print(y)  # 20
+
+    # 파이썬은 쉼표를 튜플 생성자로 사용하니 괄호는 생략 가능
+    x, y = 10, 20
+    ```
+
+### range
+ - 연속된 정수 시퀀스를 `생성`하는 변경 불가능한 자료형
+
+#### range 표현 1
+- `range(시작 값, 끝 값, 증가 값)`
+- `range(n)`
+    - 0부터 n-1까지의 숫자의 시퀀스
+- `range(n, m) `
+    - n부터 m-1까지의 숫자 시퀀스
+
+    ```python
+    my_range_1 = range(5)
+    my_range_2 = range(1, 10)
+
+    print(my_range_1)  # range(0, 5)
+    print(my_range_2)  # range(1, 10)
+    # 마지막 숫자 = m-1
+    ```
+
+#### range 특징
+- 증가 값이 없으면 1씩 증가
+- 증가 값이 음수이면 감소 / 증가 값이 양수이면 증가
+- 증가 값이 0이면 에러
+- 증가 값이 음수이면 시작 값이 끝 값보다 커야 함 (시작값>끝값)
+- 증가 값이 양수이면 시작 값이 끝 값보다 작아야 함 (시작값<끝값)
+
+#### ragne 표현 2
+- 주료 반복문과 함께 사용 예정
+
+```python
+# 리스트로 형 변환 시 데이터 확인 가능
+print(list(range(5)))   # [0, 1, 2, 3, 4]
+print(list(range(1, 10)))  # [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+# 반복문과 함께 활용
+for i in range(1, 10):
+    print(i)  # 1 2 3 4 5 6 7 8 9
+for i in range(1, 10, 2):
+    print(i)  # 1 3 5 7 9
+```
+## Non-sequence Types
+### dict `딕셔너리`
+- `key - value 쌍으로 이루어진` `순서와 중복이 없는` `변경 가능한 자료형`
+#### 딕셔너리 표현
+- key는 변경 불가능한 자료형만 사용 가능 (str, int, float, tuple, range …)
+- value는 모든 자료형 사용 가능
+- 중괄호(`{}`)로 표기
+
+    ```python
+    my_dict_1 = {}
+    my_dict_2 = {'key': 'value'}
+    my_dict_3 = {'apple': 12, 'list': [1, 2, 3]}
+
+    print(my_dict_1)  # {}
+    print(my_dict_2)  # {'key': 'value'}
+    print(my_dict_3)  # {'apple': 12, 'list': [1, 2, 3]} #2 개
+    ```
+#### 딕셔너리 사용
+- key를 통해 value에 접근
+
+    ```python
+    my_dict = {'apple': 12, 'list': [1, 2, 3]}
+    print(my_dict['apple'])  # 12
+    print(my_dict['list'])  # [1, 2, 3]
+
+    # 추가
+    my_dict['banana'] = 50
+    print(my_dict) # {'apple': 12, 'list': [1, 2, 3], 'banana': 50}
+
+    # 변경
+    my_dict['apple'] = 100
+    print(my_dict) # {'apple': 100, 'list': [1, 2, 3], 'banana': 50}
+key는 변경 불가능한 자료형만 사용 가능
+value는 모든 자료형 사용 가능
+key-value --> API에서 많이 씀
+딕셔너리 --> 순서 없음, 리스트 --> 순서 있음
+딕셔너리의 모든 key, value값을 한줄씩 출력하려면 반복문 사용, items 활용
+```python
+for x, y in dictionary.items:
+    print(f'{x} {y}')
+```
+### 복사
+- 얕은 복사
+- 깊은 복사
+a = [1,2,3,4]
+b = a
+b[0]
+이러면 얕은 복사
+깊은 복사를 위해서는
+```python
+import copy
+a = [1,2,3,4]
+b = copy.deepcopy(a)
+
+또는
+a = [1,2,3,4]
+b = a[:]
+이거는 반쪽짜리지만 깊은 복사임
+그러나 반쪽짜리인 이유는 리스트 안에 리스트가 없이 때문임
+
+a = [1,2,[3,4]]
+b = a[:]
+b[2][0] = 100
+
+이럴경우 리스트 내의 리스트가 얕은 복사가 됨
+
+## set `세트`
+- 순서와 중복이 없는 변경 가능한 자료형
+#### 세트 표현
+- 수학에서의 집합과 동일한 연산 처리 가능
+- 중괄호(`{}`)로 표기
+
+    ```python
+    my_set_1 = set() #set는 만드려면 형식을 선언해야함
+    my_set_2 = {1, 2, 3}
+    my_set_3 = {1, 1, 1}
+
+    print(my_set_1)  # set()
+    print(my_set_2)  # {1, 2, 3}
+    print(my_set_3)  # {1}
+    ```
+
+a = {} 
+이건 set/dict중에서 dict임
+#### 세트의 집합 연산
+```python
+my_set_1 = {1, 2, 3}
+my_set_2 = {3, 6, 9}
+
+# 합집합
+print(my_set_1 | my_set_2)  # {1, 2, 3, 6, 9}
+
+# 차집합
+print(my_set_1 - my_set_2)  # {1, 2}
+
+# 교집합
+print(my_set_1 & my_set_2)  # {3}
+```
+## Other Types
+### None
+- 파이썬에서 ‘값이 없음’을 표현하는 자료형
+
+#### None 표현
+```python
+variable = None
+
+print(variable)  # None
+```
+### Boolean
+- 참(True)과 거짓(False)을 표현하는 자료형
+
+#### 불리언 표현
+- 비교 / 논리 연산의 평가 결과로 사용됨
+- 주로 조건 / 반복문과 함께 사용
+
+    ```python
+    bool_1 = True
+    bool_2 = False
+
+    print(bool_1)  # True
+    print(bool_2)  # False
+    print(3 > 1)  # True
+    print('3' != 3)  # True
+    ```
+## Collection
+### Collection
+- 여러 개의 항목 또는 요소를 담는 자료 구조
+- str, list, tuple, set, dict
+#### 컬렉션 정리
+|     컬렉션    	|     변경 가능 여부    	|     순서 여부    	|          	|
+|:-------------:	|:---------------------:	|:----------------:	|:--------:	|
+|       str     	|            X          	|         O        	|  시퀀스  	|
+|      list     	|            O          	|         O        	|  시퀀스  	|
+|      tuple    	|            X          	|         O        	|  시퀀스  	|
+|       dict     	|            O          	|         X        	| 비시퀀스 	|
+|      set     	|            O          	|         X        	| 비시퀀스 	|
+#### 불변과 가변의 차이 (1/2)
+```python
+my_str = 'hello'
+# TypeError: 'str' object does not support item assignment
+my_str[0] = 'z'
+
+my_list = [1, 2, 3]
+my_list[0] = 100
+# [100, 2, 3]
+print(my_list)
+```
+## 정리
+### Sequence Type
+- 종류 : str, list, tuple, range
+- 중첩따옴표
+- Escape sequence
+### Non-Sequence Type
+- 종류 : dictionary, set
+- copy 함수, 얕은 복사 깊은 복사
+### Other Type
+- 종류 : None, Boolean
