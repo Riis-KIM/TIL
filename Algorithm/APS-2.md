@@ -29,7 +29,7 @@ arr[0][0] = 1 을 넣을 때 두 행의 모든 0번째 인덱스가 1로 바뀜
 
 #### 전치 행렬
 - 3x3의 경우
-- ![사진](C:\Users\SSAFY\Desktop\TIL\TIL\Algorithm\images\matrix.png)
+- ![사진](./images/matrix.png)
 
 #### 부분집합
 - 유한 개의 정수로 이루어진 집합이 있을 때, 이 집합의 부분집합 중에서 그 집합의 원소를 모두 더한 값이 0이 되는 경우가 있는지 알아내는 문제
