@@ -1,3 +1,20 @@
+'''
+주어진 정보를 통해 배열을 새로 만듬
+인덱스 연산을 이용해서 품
+가장 큰 값 기준으로 왼쪽 확인해서 면적 더함
+오른쪽 확인해서 면적 더함
+가장 큰 값이 차지하는 면적을 더함
+'''
+'''
+7
+2 4
+11 4
+15 8
+4 6
+5 3
+8 10
+13 6
+'''
 T = int(input())
 
 arr = []
@@ -6,49 +23,56 @@ for _ in range(T):
 
 arr.sort()
 
-# 최대 높이, 최대일때 인덱스 위치
-top = 0
-idx = 0
+#  최대일때 인덱스 위치
+max_idx = 0
 for i in range(len(arr)):
-    if top < arr[i][1]:
-        top = arr[i][1]
-        idx = i
+    if arr[max_idx][1] < arr[i][1]:
+        max_idx = i
+max_idx_dummy = max_idx
 
+'''
+[[2, 4], [4, 6], [5, 3], [8, 10], [11, 4], [13, 6], [15, 8]]
+3
+'''
 # 면적
 box = 0
-# 오른쪽 계산
-t = idx
-while t < len(arr):
-    p = arr[t][0]
-    tp = 0
-    for q in range(t+1, len(arr)):
-        if tp <= arr[q][1]:
-            tp = arr[q][1]
-            t = q
-    box += (arr[t][0]+1 - p)*tp
-    t+=1
-
 # 왼쪽 계산
-t = idx
-while t > 0:
-    p = arr[t][0]
-    tp = 0
-    for q in range(0, t):
-        if tp <= arr[q][1]:
-            tp = arr[q][1]
-            t = q
-    box += (p - arr[t][0]) * tp
+left_idx = max_idx - 1
+left_high_idx = max_idx - 1
+# left_idx 시작값 = 2
+while left_idx > -1:
+    # 초기 i 값 = 2, 1, 0
+    for i in range(left_idx, -1, -1):
+        if arr[i][1] >= arr[left_high_idx][1]:
+            left_high_idx = i
+            # 가로 곱하기 세로
+    box += (arr[max_idx_dummy][0] - arr[left_high_idx][0]) * arr[left_high_idx][1]
+    # 왼쪽 최대 idx 변경
+    max_idx_dummy = left_high_idx
+    # 더 왼쪽 탐색
+    left_high_idx -= 1
+    left_idx = left_high_idx
 
-# 꼭다리 계산
-high = 0
-for i in range(idx):
-    if arr[i][1] > high:
-        high = arr[i][1]
+max_idx_dummy = max_idx
+# 오른쪽 계산
+right_idx = max_idx + 1
+right_high_idx = max_idx + 1
+# right_idx 시작값 = 4
+while right_idx < len(arr):
+    # 초기 i 값 = 4, 5, 6
+    for i in range(right_idx, len(arr)):
+        if arr[i][1] >= arr[right_high_idx][1]:
+            right_high_idx = i
+            # 가로 곱하기 세로
+    box += (arr[right_high_idx][0] - arr[max_idx_dummy][0]) * arr[right_high_idx][1]
+    # 오른쪽 최대 idx 변경
+    max_idx_dummy = right_high_idx
+    # 더 오른쪽 탐색
+    right_high_idx += 1
+    right_idx = right_high_idx
 
-for i in range(idx+1, len(arr)):
-    if arr[i][1] > high:
-        high = arr[i][1]
+# 가장 큰 지점 면적 더하기
+box += arr[max_idx][1]
 
-box += top-high
+
 print(box)
-
