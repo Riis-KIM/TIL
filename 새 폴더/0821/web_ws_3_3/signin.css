@@ -1,0 +1,63 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+}
+
+.title h1{
+  font-weight: bolder;
+}
+.title {
+  border-bottom: 1px solid grey;
+  margin-bottom: 15px;
+}
+.login {
+  width: 100%;
+  max-width: 550px;
+  padding: 15px;
+  margin: auto;
+  border: 1px blue groove;
+  border-radius: 1%;
+}
+.login .signin{
+  align-items: center;
+  border-bottom: 2px solid blue;
+}
+.login .checkbox {
+  font-weight: 400;
+}
+
+.login .form-floating:focus-within {
+  z-index: 2;
+}
+.login .form-floating .form-control{
+  border-top: 1px;
+  border-bottom: 1px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.login input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 10;
+  border-bottom-left-radius: 10;
+}
+
+.login input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 10;
+  border-top-right-radius: 10;
+}
+
+
+.checklink {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 520px;
+}
