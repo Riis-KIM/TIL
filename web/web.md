@@ -167,4 +167,20 @@ flexbox 슉성 목록
 #### UI&UX
 - UX
   - 제품이나 서비스를 사용하는 사람들이 느끼는 전체적인 경험과 만족도를 개선하고 최적화하기 위한 디자인과 개발 분야
-- 
+
+검색엔진 최적화(SEO)
+seobility
+
+### 시멘틱 구조
+<header> - 문서의 머릿말
+<nav> - 페이지 메뉴
+<main> - 주요 콘텐츠
+<section> - 주제별로 문서의 콘텐츠 영역
+<article> - 개별 콘텐츠 요소
+<footer> - 문서의 꼬리말
+
+1. bootstrap -> 다른 사람 코드 가져오는 법 -> 설치 or 실시간으로 가져오자(CDN)
+2. font -> 구글폰트
+3. 아이콘 -> fontawesome
+
+cdnjs.com

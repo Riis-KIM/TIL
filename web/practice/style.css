@@ -1,0 +1,16 @@
+
+
+
+
+/* main__section__intro */
+.intro,
+.skills,
+.projects,
+.contacts {
+  height: 300px;
+}
+
+.skills,
+.contacts {
+  background-color: beige;
+}
