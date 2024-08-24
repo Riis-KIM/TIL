@@ -18,12 +18,66 @@
 - ![사진](./images/HTML.png)
 - ![사진](./images/HTML_head.png)
 - 알트+B
+- HTML Element: 하나의 요소에는 여는 태그와 닫는 태그 그리고 내용이 구성됨
+  - <p></p>
+- HTML Attribute: 사용자가 원하는 기준에 맞도록 요소 설정하거나 방식으로 동작 조절
+  - 나타내고 싶지 않지만 추가적인 기능, CSS스타일 적용 위해 해당 요소 선택값
+  1. 속성은 요소 이름과 속성 사이에 공백 필요
+  2. 하나 이상의 속성들이 있는 경우에는 속성 사이 공백으로 구분
+  3. 속성 값은 열고 닫는 따옴표로 감쌈 
+#### CSS
+- 웹 페이지의 디자인과 레이아웃을 구성하는 요소
+- 인라인 스타일 : HTML요소 내 style 속성 값으로 작성
+- 내부 스타일 : head 태그 안에 style 태그에 작성
+- 외부 스타일 : 별도의 CSS파일 생성 후 HTML link 태그 사용해 불러옴
+#### CSS selector 종류
+- 기본 선택자
+  - 전체(*) 선택자
+    - HTML 모든 요소 선택
+  - 요소(tag) 선택자
+    - 지정된 모든 태그 선택
+  - 클래스(class) 선택자
+    - 주어진 클래스 속성을 가진 모든 요소 선택
+  - 아이디(id) 선택자
+    - 주어진 아이디 속성을 가진 요소 선택
+    - 문서에는 아이디를 가진 요소가 하나만 있어야함
+  - 속성(attr) 선택자 등
+- 결합자
+  - 자손 결합자(" "(space))
+    - 첫 번째 요소의 자손 요소들 선택
+    - ex) p span은 <p> 안에 있는 모든 <span>을 선택(하위 레벨 상관 없이)
+  - 자식 결합자(">")
+    - 첫 번째 요소의 직계 자식만 선택
+    - ex) ul > li은 <ul> 안에 있는 모든 <li> 선택 (한단계 아래 자식들만)
+#### 명시도
+- CSS selector에 가중치 계산해 어떤 스타일 적용할지 결정
+- 동일한 요소를 가진 2개 이상의 CSS 규칙이 있을 경우 명시도 높은 Selector 선택
+- 한 요소에 동일한 가중치를 가진 선택자 적용 시 CSS 마지막에 나오는 선언 선택(계단식)
+
+#### 명시도 순서
+1. !important -> 계단식 구조 무시하고 강제로 스타일 적용해 사용을 권장하지는 않음
+2. inline 스타일
+3. 선택자
+    - id 선택자 > class 선택자 > 요소 선택자
+4. 소스 코드 선언 순서
+
+#### CSS 상속
+- 상속되는 속성
+  - Text 관련 요소(font, color, text-align), opacitym visibility 등
+- 상속되지 않는 속성
+  - Box model 관련 요소(width, height, border, box-sizing)
+  - position 관련 요소(position, top/right/bottom/left, z-index)
 
 #### CSS box model
 - 웹 페이지의 모든 HTML 요소를 감싸는 사각형 상자 모델
 - 내용, 안쪽 여백, 테두리, 외부 간격으로 구성되어 요소의 크기와 배치를 결정
 - 박스 표시 타입
   - Outer display type
+    - 박스가 문서 흐름에서 어떻게 동작할지를 결정, block, inline
+#### block 특징
+- 항상 새로운 행으로 나뉨
+- width와 height 속성 사용 가능
+- padding, margin, border로 인해 다른 요소를 상자로부터 밀어냄
   - Inner display type
 
 #### 박스 구성요소
